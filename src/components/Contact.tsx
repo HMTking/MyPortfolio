@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -128,10 +128,6 @@ const Contact: React.FC = () => {
       href: 'https://www.linkedin.com/in/datt-patel-a312a5256/',
       color: 'from-blue-600 to-blue-400'
     }
-  ];
-
-  const socialLinks = [
-    // Remove this section - moving to contact info above
   ];
 
   return (

@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, ExternalLink } from 'lucide-react';
+
+// Import images
+import aslImage from '/images/ASL final.webp';
+import financeImage from '/images/finace traker.png';
+import plantImage from '/images/final E plant website.png';
 
 interface Project {
   id: number;
@@ -25,7 +30,7 @@ const Projects: React.FC = () => {
       id: 1,
       title: 'American Sign Language (ASL) to Speech Converter',
       description: 'ML system that converts ASL gestures to speech and complete sentences in real time. Implemented multilayer perceptron (MLP) with time-frame separation for enhanced gesture recognition.',
-      image: '/images/ASL final.webp',
+      image: aslImage,
       technologies: ['Python', 'OpenCV', 'MediaPipe', 'gTTS', 'Machine Learning', 'Computer Vision'],
       githubUrl: 'https://github.com/HMTking/American-Sign-Language-To-Speech-and-Sentence-Conversion/tree/main',
       category: 'machine-learning'
@@ -34,7 +39,7 @@ const Projects: React.FC = () => {
       id: 2,
       title: 'Personal Finance Tracker',
       description: 'Web-based finance tracker to record income/expenses with persistent SQLite storage and responsive UI. Developed RESTful APIs for transaction CRUD and financial summary with real-time dashboard updates.',
-      image: '/images/finace traker.png',
+      image: financeImage,
       technologies: ['Flask', 'SQLite', 'Chart.js', 'JavaScript', 'HTML', 'CSS'],
       githubUrl: 'https://github.com/HMTking/personal-finance-tracker-By-DattPatel',
       liveUrl: 'https://personal-finance-tracker-by-dattpatel.onrender.com',
@@ -44,7 +49,7 @@ const Projects: React.FC = () => {
       id: 3,
       title: 'Mini Plant Store - Greenify',
       description: 'Plant e-commerce application with customer and admin modules using the MERN stack and Vite. Implemented features including product browsing, cart management, order history, and checkout with authentication.',
-      image: '/images/final E plant website.png',
+      image: plantImage,
       technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Vite', 'JWT', 'Cloudinary'],
       githubUrl: 'https://github.com/HMTking/greenify',
       liveUrl: 'https://greenify-frontend-seven.vercel.app',
@@ -70,7 +75,7 @@ const Projects: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Import profile image
+import profileImage from '/images/new image.jpg';
+
 const Hero: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,7 +21,7 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -27,7 +30,7 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -95,7 +98,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               <img
-                src="/images/new image.jpg"
+                src={profileImage}
                 alt="Datt Patel"
                 className="w-full h-full rounded-full object-cover"
               />

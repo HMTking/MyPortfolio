@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               transition={{
                 duration: 1,
                 repeat: Infinity,
-                ease: 'easeInOut',
+                ease: [0.42, 0, 0.58, 1],
               }}
             >
               <Heart className="w-4 h-4 text-red-500 fill-current" />

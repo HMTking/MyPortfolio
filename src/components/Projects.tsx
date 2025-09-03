@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
       image: plantImage,
       technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Vite', 'JWT', 'Cloudinary'],
       githubUrl: 'https://github.com/HMTking/greenify',
-      liveUrl: 'https://greenify-frontend-seven.vercel.app',
+      liveUrl: 'https://greenify-frontend-chi.vercel.app/',
       category: 'fullstack'
     }
   ];

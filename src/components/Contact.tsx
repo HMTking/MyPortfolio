@@ -108,13 +108,6 @@ const Contact: React.FC = () => {
       color: 'from-red-500 to-pink-500'
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91 9499886758',
-      href: 'tel:+919499886758',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
       icon: Github,
       label: 'GitHub',
       value: 'HMTking',

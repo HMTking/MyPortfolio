@@ -13,28 +13,6 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-950 py-8 relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Copyright */}
-          <motion.div
-            className="flex items-center space-x-2 text-gray-400 mb-4 md:mb-0"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span>© {currentYear} Made by Tinni's</span>
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                ease: [0.42, 0, 0.58, 1],
-              }}
-            >
-              <Heart className="w-4 h-4 text-red-500 fill-current" />
-            </motion.div>
-          </motion.div>
-
           {/* Scroll to Top */}
           <motion.button
             onClick={scrollToTop}

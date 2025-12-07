@@ -53,7 +53,7 @@ const About: React.FC = () => {
                 Bio
               </h3>
               <p className="text-gray-300 leading-relaxed text-lg">
-                I'm Datt Patel, a final-year Computer Science and Engineering student at Indian Institute of Information Technology, Surat, and a GATE CS 2025 achiever with All India Rank 387 out of 170,000+ aspirants. I also secured All India Rank 877 in GATE Data Science and Artificial Intelligence. I have a strong foundation in computer science fundamentals, with a keen interest in software development, artificial intelligence, and data science. With a disciplined approach and sharp problem-solving mindset, I aspire to contribute as a Software Engineer / Data Scientist, creating technology that drives real impact.
+                I am Datt Patel, a Computer Science and Engineering professional from the Indian Institute of Information Technology, Surat. I secured an All India Rank of 387 in GATE CS among over 2 lakh+ candidates, and an All India Rank of 877 in GATE Data Science and Artificial Intelligence. I possess a strong command of core computer science fundamentals, backed by hands-on expertise in software development, artificial intelligence, and data science, enabling me to build impactful, real-world technology.
               </p>
             </motion.div>
 
@@ -67,8 +67,8 @@ const About: React.FC = () => {
                 <div className="space-y-4">
                   <div className="p-4 bg-gray-800 rounded-lg border border-gray-700 hover-lift h-32 flex flex-col justify-between">
                     <div>
-                      <h5 className="font-semibold text-white">Bachelor of Technology in Computer Science</h5>
-                      <p className="text-purple-400 text-sm">IIIT Surat</p>
+                      <h5 className="font-semibold text-white">Indian Institute of Information Technology, Surat</h5>
+                      <p className="text-purple-400 text-sm">Bachelor of Technology in Computer Science</p>
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">2022 - 2026</p>
@@ -87,8 +87,8 @@ const About: React.FC = () => {
                 <div className="space-y-4">
                   <div className="p-4 bg-gray-800 rounded-lg border border-gray-700 hover-lift h-32 flex flex-col justify-between">
                     <div>
-                      <h5 className="font-semibold text-white">Summer Intern - Data Science and Technology</h5>
-                      <p className="text-purple-400 text-sm">India Space Lab</p>
+                      <h5 className="font-semibold text-white">India Space Lab</h5>
+                      <p className="text-purple-400 text-sm">Summer Intern - Data Science and Technology</p>
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">2025</p>

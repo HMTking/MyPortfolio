@@ -2,7 +2,10 @@
 
 A fully responsive, highly interactive, and dynamic portfolio website built with React, TypeScript, Vite, and Tailwind CSS.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=400&fit=crop)
+## 🌐 Portfolio
+👉 **[Visit My Portfolio](https://my-portfolio-nine-pink-85.vercel.app/)**  
+
+
 
 ## 🚀 Features
 

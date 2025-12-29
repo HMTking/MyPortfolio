@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 
@@ -99,36 +99,14 @@ const Contact: React.FC = () => {
     },
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'dattpatel2020@gmail.com',
-      href: 'mailto:dattpatel2020@gmail.com',
-      color: 'from-red-500 to-pink-500'
-    },
-    {
-      icon: Github,
-      label: 'GitHub',
-      value: 'HMTking',
-      href: 'https://github.com/HMTking',
-      color: 'from-gray-600 to-gray-400'
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      value: 'datt-patel-a312a5256',
-      href: 'https://www.linkedin.com/in/datt-patel-a312a5256/',
-      color: 'from-blue-600 to-blue-400'
-    }
-  ];
+  // Removed contactInfo - not used in current design
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 relative overflow-hidden">
+    <section id="contact" className="py-20 bg-white relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-400 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary-400 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container mx-auto px-6 relative">
@@ -141,56 +119,15 @@ const Contact: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Get In Touch
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-              Have a question or want to work together? Feel free to drop me a message. 
-              I'd love to hear from you!
-            </p>
-            <div className="w-20 h-1 bg-purple-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-accent-600 mx-auto"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-                <p className="text-gray-400 mb-8">
-                  Fill up the form and I'll get back to you as soon as possible.
-                </p>
-              </div>
-
-              {/* Contact Details */}
-              <div className="space-y-6">
-                {contactInfo.map((info) => (
-                  <motion.a
-                    key={info.label}
-                    href={info.href}
-                    className="flex items-center p-4 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 hover-lift group"
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <motion.div
-                      className={`p-3 rounded-lg bg-gradient-to-r ${info.color} mr-4`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <info.icon className="w-5 h-5 text-white" />
-                    </motion.div>
-                    <div>
-                      <h4 className="text-white font-medium group-hover:text-purple-400 transition-colors">
-                        {info.label}
-                      </h4>
-                      <p className="text-gray-400">{info.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-
+          <div className="max-w-4xl mx-auto">
             {/* Contact Form */}
-            <motion.div variants={itemVariants} className="bg-gray-800 rounded-xl p-8">
+            <motion.div variants={itemVariants} className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <AnimatePresence mode="wait">
                 {isSubmitted ? (
                   <motion.div
@@ -209,8 +146,8 @@ const Contact: React.FC = () => {
                     >
                       <CheckCircle className="w-12 h-12 text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
-                    <p className="text-gray-400">Thank you for reaching out. I'll get back to you soon!</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
+                    <p className="text-gray-600">Thank you for reaching out. I'll get back to you soon!</p>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -218,7 +155,7 @@ const Contact: React.FC = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
-                    className="space-y-6"
+                    className="space-y-4"
                   >
                     {/* Error Message */}
                     {submitError && (
@@ -231,9 +168,9 @@ const Contact: React.FC = () => {
                         <p className="text-red-400 text-sm">{submitError}</p>
                       </motion.div>
                     )}
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <motion.div whileFocus={{ scale: 1.02 }}>
-                        <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <motion.div whileFocus={{ scale: 1.01 }}>
+                        <label htmlFor="name" className="block text-gray-700 font-medium mb-1 text-sm">
                           Your Name
                         </label>
                         <input
@@ -242,13 +179,13 @@ const Contact: React.FC = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          placeholder="John Doe"
-                          className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                          placeholder="Datt Limbani"
+                          className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500/20 transition-all text-sm"
                           required
                         />
                       </motion.div>
-                      <motion.div whileFocus={{ scale: 1.02 }}>
-                        <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
+                      <motion.div whileFocus={{ scale: 1.01 }}>
+                        <label htmlFor="email" className="block text-gray-700 font-medium mb-1 text-sm">
                           Your Email
                         </label>
                         <input
@@ -257,15 +194,15 @@ const Contact: React.FC = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          placeholder="john@example.com"
-                          className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                          placeholder="limbani@gmail.com"
+                          className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500/20 transition-all text-sm"
                           required
                         />
                       </motion.div>
                     </div>
                     
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <label htmlFor="subject" className="block text-gray-300 font-medium mb-2">
+                    <motion.div whileFocus={{ scale: 1.01 }}>
+                      <label htmlFor="subject" className="block text-gray-700 font-medium mb-1 text-sm">
                         Subject
                       </label>
                       <input
@@ -275,13 +212,13 @@ const Contact: React.FC = () => {
                         value={formData.subject}
                         onChange={handleInputChange}
                         placeholder="How can I help you?"
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                        className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500/20 transition-all text-sm"
                         required
                       />
                     </motion.div>
 
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <label htmlFor="message" className="block text-gray-300 font-medium mb-2">
+                    <motion.div whileFocus={{ scale: 1.01 }}>
+                      <label htmlFor="message" className="block text-gray-700 font-medium mb-1 text-sm">
                         Message
                       </label>
                       <textarea
@@ -290,8 +227,8 @@ const Contact: React.FC = () => {
                         value={formData.message}
                         onChange={handleInputChange}
                         placeholder="Your message here..."
-                        rows={6}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                        rows={4}
+                        className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500/20 transition-all resize-none text-sm"
                         required
                       />
                     </motion.div>
@@ -299,8 +236,8 @@ const Contact: React.FC = () => {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center px-8 py-4 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-600/50 text-white rounded-lg font-medium transition-all duration-300 hover-lift"
-                      whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                      className="w-full flex items-center justify-center px-6 py-3 bg-accent-600 hover:bg-accent-700 disabled:bg-accent-600/50 text-white rounded-lg font-medium transition-all duration-300 hover-lift"
+                      whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
                       whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                     >
                       {isSubmitting ? (

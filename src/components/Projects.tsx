@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-800">
+    <section id="projects" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -91,14 +91,10 @@ const Projects: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Projects
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-              Here are some of the projects I've worked on, showcasing my skills in various 
-              technologies and problem domains.
-            </p>
-            <div className="w-20 h-1 bg-purple-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-accent-600 mx-auto"></div>
           </motion.div>
 
           {/* Projects Grid */}
@@ -115,7 +111,7 @@ const Projects: React.FC = () => {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
-                  className="bg-gray-900 rounded-xl overflow-hidden hover-lift group flex flex-col h-full"
+                  className="bg-white rounded-xl overflow-hidden hover-lift group flex flex-col h-full shadow-md border border-gray-200"
                   whileHover={{ y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -139,7 +135,7 @@ const Projects: React.FC = () => {
                         {project.liveUrl && (
                           <motion.a
                             href={project.liveUrl}
-                            className="p-2 bg-purple-600 rounded-full text-white hover:bg-purple-700 transition-colors"
+                            className="p-2 bg-accent-600 rounded-full text-white hover:bg-accent-700 transition-colors"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                           >
@@ -152,17 +148,17 @@ const Projects: React.FC = () => {
 
                   {/* Project Content */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-accent-600 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-gray-400 mb-4 leading-relaxed flex-grow text-sm">
+                    <p className="text-gray-600 mb-4 leading-relaxed flex-grow text-sm">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-purple-600/20 text-purple-400 text-xs rounded-full border border-purple-600/30"
+                          className="px-3 py-1 bg-accent-50 text-accent-700 text-xs rounded-full border border-accent-200"
                         >
                           {tech}
                         </span>

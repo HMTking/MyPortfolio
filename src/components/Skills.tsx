@@ -78,7 +78,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-gray-900">
+    <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -89,14 +89,10 @@ const Skills: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Skills
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-              I have experience with various programming languages, machine learning frameworks,
-              and web technologies. I'm passionate about AI/ML and competitive programming.
-            </p>
-            <div className="w-20 h-1 bg-purple-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-accent-600 mx-auto"></div>
           </motion.div>
 
           {/* Skills Grid */}
@@ -108,7 +104,7 @@ const Skills: React.FC = () => {
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="bg-gray-800 rounded-xl p-6 hover-lift group"
+                className="bg-gray-50 rounded-xl p-6 hover-lift group border border-gray-200"
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -121,7 +117,7 @@ const Skills: React.FC = () => {
                   >
                     <category.icon className="w-6 h-6 text-white" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold text-white group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-accent-600 transition-colors">
                     {category.title}
                   </h3>
                 </div>
@@ -133,14 +129,14 @@ const Skills: React.FC = () => {
                       key={skill}
                       variants={skillVariants}
                       custom={skillIndex}
-                      className="flex items-center justify-between p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors group/skill"
+                      className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors group/skill border border-gray-200"
                       whileHover={{ x: 5 }}
                     >
-                      <span className="text-gray-300 font-medium group-hover/skill:text-white transition-colors">
+                      <span className="text-gray-700 font-medium group-hover/skill:text-gray-900 transition-colors">
                         {skill}
                       </span>
                       <motion.div
-                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        className="w-2 h-2 bg-accent-500 rounded-full"
                         animate={{
                           scale: [1, 1.2, 1],
                           opacity: [0.5, 1, 0.5],

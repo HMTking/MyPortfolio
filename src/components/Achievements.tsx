@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Award, GraduationCap, ChevronLeft, ChevronRight, Calendar, Star, ExternalLink, Shield } from 'lucide-react';
+import { Trophy, GraduationCap, Calendar, Shield } from 'lucide-react';
 
 interface Achievement {
   id: number;
@@ -157,18 +157,18 @@ const Achievements: React.FC = () => {
   const getTypeInfo = (type: string) => {
     switch (type) {
       case 'competition':
-        return { label: 'Competition', bgColor: 'bg-yellow-500/20', textColor: 'text-yellow-400', borderColor: 'border-yellow-500/30' };
+        return { label: 'Competition', bgColor: 'bg-yellow-50', textColor: 'text-yellow-700', borderColor: 'border-yellow-200' };
       case 'academic':
-        return { label: 'Academic', bgColor: 'bg-purple-500/20', textColor: 'text-purple-400', borderColor: 'border-purple-500/30' };
+        return { label: 'Academic', bgColor: 'bg-accent-50', textColor: 'text-accent-700', borderColor: 'border-accent-200' };
       case 'certification':
-        return { label: 'Certification', bgColor: 'bg-green-500/20', textColor: 'text-green-400', borderColor: 'border-green-500/30' };
+        return { label: 'Certification', bgColor: 'bg-green-50', textColor: 'text-green-700', borderColor: 'border-green-200' };
       default:
-        return { label: 'Achievement', bgColor: 'bg-blue-500/20', textColor: 'text-blue-400', borderColor: 'border-blue-500/30' };
+        return { label: 'Achievement', bgColor: 'bg-blue-50', textColor: 'text-blue-700', borderColor: 'border-blue-200' };
     }
   };
 
   return (
-    <section id="achievements" className="py-20 bg-gray-800">
+    <section id="achievements" className="py-16 bg-gray-50">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -179,69 +179,16 @@ const Achievements: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
               Achievements
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-              Academic achievements and competitive examination rankings that showcase 
-              my dedication to excellence in computer science and engineering.
-            </p>
-            <div className="w-20 h-1 bg-purple-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-accent-600 mx-auto"></div>
           </motion.div>
 
           {/* Achievement Carousel */}
           <motion.div variants={itemVariants} className="relative">
-            {/* Navigation Instructions */}
-            <div className="flex justify-center items-center mb-8">
-              <motion.div
-                className="flex items-center space-x-4 text-gray-400"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: [0.42, 0, 0.58, 1],
-                }}
-              >
-                <span className="text-sm">Drag to explore</span>
-                <div className="flex space-x-1">
-                  {achievements.map((_, index) => (
-                    <motion.button
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex ? 'bg-purple-500 w-8' : 'bg-gray-600'
-                      }`}
-                      onClick={() => {
-                        handleManualNavigation(() => {
-                          setDirection(index > currentIndex ? 1 : -1);
-                          setCurrentIndex(index);
-                        });
-                      }}
-                      whileHover={{ scale: 1.2 }}
-                      whileTap={{ scale: 0.9 }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
             {/* Carousel Container */}
             <div className="relative overflow-hidden rounded-xl">
-              {/* Navigation Buttons - Fixed positioning outside animated content */}
-              <button
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-gray-800/80 hover:bg-gray-700 text-white rounded-full backdrop-blur-sm transition-colors"
-                onClick={() => handleManualNavigation(prevSlide)}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-gray-800/80 hover:bg-gray-700 text-white rounded-full backdrop-blur-sm transition-colors"
-                onClick={() => handleManualNavigation(nextSlide)}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={currentIndex}
@@ -254,19 +201,24 @@ const Achievements: React.FC = () => {
                     x: { type: "spring", stiffness: 200, damping: 25, duration: 1 },
                     opacity: { duration: 0.8 }
                   }}
-                  className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 lg:p-12"
+                  className="bg-white rounded-xl p-6 lg:p-8 shadow-lg border border-gray-200 cursor-grab active:cursor-grabbing"
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={1}
+                  dragElastic={0.2}
                   onDragStart={() => setIsAutoPlaying(false)}
                   onDragEnd={(_, { offset, velocity }) => {
-                    const swipe = Math.abs(offset.x) * velocity.x;
-                    if (swipe > 10000) {
+                    const swipeThreshold = 50; // minimum distance to trigger swipe
+                    const swipePower = Math.abs(offset.x) * velocity.x;
+                    
+                    // Swipe left (next)
+                    if (offset.x < -swipeThreshold || swipePower < -500) {
                       handleManualNavigation(() => {
                         setDirection(1);
                         nextSlide();
                       });
-                    } else if (swipe < -10000) {
+                    } 
+                    // Swipe right (previous)
+                    else if (offset.x > swipeThreshold || swipePower > 500) {
                       handleManualNavigation(() => {
                         setDirection(-1);
                         prevSlide();
@@ -279,125 +231,64 @@ const Achievements: React.FC = () => {
                   onMouseEnter={() => setIsAutoPlaying(false)}
                   onMouseLeave={() => setIsAutoPlaying(true)}
                 >
-                  <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div className="max-w-4xl mx-auto">
                     {/* Achievement Info */}
-                    <div className="space-y-6">
-                      <div className="flex items-center space-x-4">
-                        <motion.div
-                          className={`p-4 rounded-full bg-gradient-to-r ${achievements[currentIndex].color}`}
-                          whileHover={{ 
-                            rotate: 360,
-                            scale: 1.1,
-                          }}
-                          transition={{ duration: 0.6 }}
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <div
+                          className={`p-2.5 rounded-full bg-gradient-to-r ${achievements[currentIndex].color}`}
                         >
-                          {React.createElement(achievements[currentIndex].icon, { className: "w-8 h-8 text-white" })}
-                        </motion.div>
+                          {React.createElement(achievements[currentIndex].icon, { className: "w-6 h-6 text-white" })}
+                        </div>
                         <div>
-                          <div className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getTypeInfo(achievements[currentIndex].type).bgColor} ${getTypeInfo(achievements[currentIndex].type).textColor} border ${getTypeInfo(achievements[currentIndex].type).borderColor}`}>
+                          <div className={`inline-block px-3 py-1.5 rounded-full text-xs font-medium ${getTypeInfo(achievements[currentIndex].type).bgColor} ${getTypeInfo(achievements[currentIndex].type).textColor} border ${getTypeInfo(achievements[currentIndex].type).borderColor}`}>
                             {getTypeInfo(achievements[currentIndex].type).label}
                           </div>
                         </div>
                       </div>
 
                       <div className="space-y-3">
-                        <h3 className="text-3xl font-bold text-white">
+                        <h3 className="text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
                           {achievements[currentIndex].title}
                         </h3>
-                        <div className="flex items-center space-x-4 text-purple-400">
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-accent-600 text-sm">
                           <span className="font-medium">{achievements[currentIndex].organization}</span>
                           <div className="flex items-center space-x-1">
                             <Calendar className="w-4 h-4" />
                             <span>{achievements[currentIndex].year}</span>
                           </div>
                         </div>
-                        <p className="text-gray-300 text-lg leading-relaxed">
+                        <p className="text-gray-700 text-sm lg:text-base leading-relaxed">
                           {achievements[currentIndex].description}
                         </p>
-                        {achievements[currentIndex].link && (
-                          <motion.a
-                            href={achievements[currentIndex].link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center space-x-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <span>{achievements[currentIndex].linkText}</span>
-                            <ExternalLink className="w-4 h-4" />
-                          </motion.a>
-                        )}
                       </div>
-                    </div>
-
-                    {/* Visual Element - Hidden on mobile */}
-                    <div className="relative hidden lg:block">
-                      <motion.div
-                        className="w-64 h-64 mx-auto relative"
-                        animate={{
-                          rotateY: [0, 360],
-                        }}
-                        transition={{
-                          duration: 20,
-                          repeat: Infinity,
-                          ease: 'linear',
-                        }}
-                      >
-                        <div className={`absolute inset-0 bg-gradient-to-r ${achievements[currentIndex].color} rounded-full opacity-20 blur-xl`}></div>
-                        <div className={`absolute inset-4 bg-gradient-to-r ${achievements[currentIndex].color} rounded-full flex items-center justify-center`}>
-                          {React.createElement(achievements[currentIndex].icon, { className: "w-24 h-24 text-white" })}
-                        </div>
-                        <motion.div
-                          className="absolute -inset-4 border-2 border-purple-500/30 rounded-full"
-                          animate={{
-                            rotate: [0, 360],
-                          }}
-                          transition={{
-                            duration: 10,
-                            repeat: Infinity,
-                            ease: 'linear',
-                          }}
-                        />
-                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
-          </motion.div>
 
-          {/* Achievement Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { label: 'GATE Qualifications', value: '2', icon: GraduationCap },
-              { label: 'JEE Percentile', value: '97.4', icon: Trophy },
-              { label: 'Certifications', value: '2', icon: Award },
-              { label: 'Total Achievements', value: '5', icon: Star },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="bg-gray-900 rounded-xl p-6 text-center hover-lift"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="inline-block p-3 bg-purple-600 rounded-full mb-4"
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.5,
-                  }}
-                >
-                  <stat.icon className="w-6 h-6 text-white" />
-                </motion.div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-gray-400">{stat.label}</div>
-              </motion.div>
-            ))}
+            {/* Navigation Dots - Outside the box */}
+            <div className="flex justify-center items-center mt-6">
+              <div className="flex space-x-1">
+                {achievements.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex ? 'bg-accent-600 w-8' : 'bg-gray-300'
+                    }`}
+                    onClick={() => {
+                      handleManualNavigation(() => {
+                        setDirection(index > currentIndex ? 1 : -1);
+                        setCurrentIndex(index);
+                      });
+                    }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  />
+                ))}
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>

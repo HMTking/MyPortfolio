@@ -30,7 +30,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-900">
+    <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -41,18 +41,18 @@ const About: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <motion.div variants={itemVariants}>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 About Me
               </h2>
-              <div className="w-20 h-1 bg-purple-600 mb-8"></div>
+              <div className="w-20 h-1 bg-accent-600 mb-8"></div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6">
-              <h3 className="text-2xl font-semibold text-purple-400 flex items-center">
+              <h3 className="text-2xl font-semibold text-accent-700 flex items-center">
                 <GraduationCap className="mr-3 w-6 h-6" />
                 Bio
               </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed text-lg">
                 I am Datt Patel, a Computer Science and Engineering professional from the Indian Institute of Information Technology, Surat. I secured an All India Rank of 387 in GATE CS among over 2 lakh+ candidates, and an All India Rank of 877 in GATE Data Science and Artificial Intelligence. I possess a strong command of core computer science fundamentals, backed by hands-on expertise in software development, artificial intelligence, and data science, enabling me to build impactful, real-world technology.
               </p>
             </motion.div>
@@ -60,19 +60,19 @@ const About: React.FC = () => {
             <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8">
               {/* Education */}
               <div className="space-y-4">
-                <h4 className="text-xl font-semibold text-purple-400 flex items-center">
+                <h4 className="text-xl font-semibold text-accent-700 flex items-center">
                   <GraduationCap className="mr-2 w-5 h-5" />
                   Education
                 </h4>
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-800 rounded-lg border border-gray-700 hover-lift h-32 flex flex-col justify-between">
-                    <div>
-                      <h5 className="font-semibold text-white">Indian Institute of Information Technology, Surat</h5>
-                      <p className="text-purple-400 text-sm">Bachelor of Technology in Computer Science</p>
+                  <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover-lift min-h-[8rem] flex flex-col justify-between overflow-hidden">
+                    <div className="flex-shrink-0">
+                      <h5 className="font-semibold text-gray-900 leading-tight break-words">Indian Institute of Information Technology, Surat</h5>
+                      <p className="text-accent-700 text-sm mt-1 leading-tight break-words">Bachelor of Technology in Computer Science</p>
                     </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">2022 - 2026</p>
-                      <p className="text-gray-400 text-sm">CGPA: 8.64/10</p>
+                    <div className="flex-shrink-0 mt-2">
+                      <p className="text-gray-600 text-sm whitespace-nowrap">2022 - 2026</p>
+                      <p className="text-gray-600 text-sm whitespace-nowrap">CGPA: 8.64/10</p>
                     </div>
                   </div>
                 </div>
@@ -80,18 +80,18 @@ const About: React.FC = () => {
 
               {/* Experience */}
               <div className="space-y-4">
-                <h4 className="text-xl font-semibold text-purple-400 flex items-center">
+                <h4 className="text-xl font-semibold text-accent-700 flex items-center">
                   <Briefcase className="mr-2 w-5 h-5" />
                   Experience
                 </h4>
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-800 rounded-lg border border-gray-700 hover-lift h-32 flex flex-col justify-between">
-                    <div>
-                      <h5 className="font-semibold text-white">India Space Lab</h5>
-                      <p className="text-purple-400 text-sm">Summer Intern - Data Science and Technology</p>
+                  <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover-lift min-h-[8rem] flex flex-col justify-between overflow-hidden">
+                    <div className="flex-shrink-0">
+                      <h5 className="font-semibold text-gray-900 leading-tight break-words">India Space Lab</h5>
+                      <p className="text-accent-700 text-sm mt-1 leading-tight break-words">Summer Intern - Data Science and Technology</p>
                     </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">2025</p>
+                    <div className="flex-shrink-0 mt-2">
+                      <p className="text-gray-600 text-sm whitespace-nowrap">2025</p>
                     </div>
                   </div>
                 </div>

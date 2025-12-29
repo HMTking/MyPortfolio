@@ -45,13 +45,13 @@ const Hero: React.FC = () => {
           className="space-y-8"
         >
           <motion.div variants={itemVariants} className="space-y-6">
-            <motion.p className="text-purple-400 text-lg font-semibold tracking-wide uppercase">
+            <motion.p className="text-accent-600 text-lg font-semibold tracking-wide uppercase">
               Hello! I'm
             </motion.p>
-            <motion.h1 className="text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+            <motion.h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight tracking-tight">
               Datt <span className="gradient-text">Patel</span>
             </motion.h1>
-            <motion.p className="text-xl lg:text-2xl text-gray-300 max-w-2xl font-medium leading-relaxed">
+            <motion.p className="text-xl lg:text-2xl text-gray-700 max-w-2xl font-medium leading-relaxed">
              From idea to impact—one line of code at a time.
             </motion.p>
           </motion.div>
@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
         >
           <div className="relative">
             <motion.div
-              className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 p-1"
+              className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary-400 to-accent-500 p-1"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
             {['Fullstack Developer', 'GATE CS AIR 387', 'GATE DS&AI AIR 877'].map((skill) => (
               <motion.span
                 key={skill}
-                className="px-5 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-purple-500/30"
+                className="px-5 py-3 bg-accent-600 hover:bg-accent-700 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-accent-500/30"
                 whileHover={{ scale: 1.08, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
